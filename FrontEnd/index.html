@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Demo Photo Album Search</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/axios/dist/axios.standalone.js"></script>
+    <script type="text/javascript" src="lib/CryptoJS/rollups/hmac-sha256.js"></script>
+    <script type="text/javascript" src="lib/CryptoJS/rollups/sha256.js"></script>
+    <script type="text/javascript" src="lib/CryptoJS/components/hmac.js"></script>
+    <script type="text/javascript" src="lib/CryptoJS/components/enc-base64.js"></script>
+    <script type="text/javascript" src="lib/url-template/url-template.js"></script>
+    <script type="text/javascript" src="lib/apiGatewayCore/sigV4Client.js"></script>
+    <script type="text/javascript" src="lib/apiGatewayCore/apiGatewayClient.js"></script>
+    <script type="text/javascript" src="lib/apiGatewayCore/simpleHttpClient.js"></script>
+    <script type="text/javascript" src="lib/apiGatewayCore/utils.js"></script>
+    <script type="text/javascript" src="apigClient.js"></script>
+    <script type="text/javascript" src="awsjsscript.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+<style>
+body {
+  background-image: url("background.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+</style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex flex-col">
+        
+        <div class = "main_heading text-center text-4xl font-bold"> Smart Photo Album </div>
+        <br/>
+        <br/>
+        <div class="search text-3xl font-bold">Find the photo:</div>
+        <br/>
+        <div class="search_input flex flex-row w-1/2">
+            <input id="note-textarea" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline "placeholder="Search for a photo" name="search">
+            <br/>
+            <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" type="submit" onclick="getPhoto()">
+               Search
+            </button>
+        </div>
+        <br/>
+        <div>
+            <div>
+                <div class="col">
+                    <button id="start-button" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" title="Start Transcription">
+                        Start
+                    </button>
+                    <button id="stop-button" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" title="Stop Transcription" disabled="true">
+                        Stop
+                    </button>
+                    <button id="reset-button" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" title="Clear Transcript"> 
+                        Clear Transcript
+                    </button>
+                </div>
+            </div>
+        </div>
+        <br/> <br/>
+        <div class ="upload_message text-3xl font-bold">Submit new photo:</div>
+        <br/>
+
+        <div>
+            <input type="file" class="form-control upload bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" name="search" id="file_path">
+            <button  type="submit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" onclick="submitPhoto()"> Upload</button>
+        </div>
+
+        <br/>
+
+        <div class="flex flex-row w-1/3">
+            Add labels: <input id="clabel" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline " placeholder="Add custom labels: " name="addLabel" value="*">
+        </div>
+
+        <div class="banner-section flex flex-col items-center" id="img-container">
+            <p id="custom_message" class="text-3xl font-bold"><br/><br/></p>
+            <div class="flex flex-col items-center" id="inner-container">
+            </div>
+        </div>
+      </div>     
+</body>
+<script type="text/javascript" src="main.js"></script>
+</html>

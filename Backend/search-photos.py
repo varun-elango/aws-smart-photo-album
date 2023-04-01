@@ -47,11 +47,10 @@ def get_image_list(slots):
                     }
                 }
             }
-            # es_response = requests.get(url, headers=headers,
-            #                           data=json.dumps(query))
-            es_response = requests.get(url, headers=headers, auth=('elasticnlp', 'Elastic@NLP1'),
+
+            es_response = requests.get(url, headers=headers, auth=('varun', 'Alpha*123'),
                                       data=json.dumps(query)).json()
-            # print("ES RESPONSE --- {}".format(json.dumps(es_response)))
+
             print(es_response)
 
             es_src = es_response['hits']['hits']
